@@ -2,6 +2,8 @@
 
 ## Java
 
+<img src="img/1.png" height="150"></img>
+
 ### Java Editions
 
 - Java SE (Standard Edition): 개인용 개발 환경을 위한 Java
@@ -9,6 +11,8 @@
 - Java ME (Micro Edition): 임베디드 환경을 위한 Java 플랫폼
 
 ### Java Development Kit (JDK)
+
+<img src="img/2.png" height="400"></img>
 
 - Oracle JDK: Oracle에서 제공하는 유료 Java 개발 플랫폼. Oracle에서 지적 재산권을 보유한 일부 플러그인이 추가로 제공되며, Oracle로부터 사후 지원을 받을 수 있다. 비상업적인 용도의 사용은 무료로 가능하나, 상업적 용도로 전환하거나 라이센스가 만료되면 더이상 Oracle JDK로 개발한 프로그램을 사용해서는 안된다.
 - OpenJDK: 오픈소스로 제공되는 무료 Java 개발 플랫폼. Java6 시기에는 성능/안정성 측면에서 Oracle JDK와 차이가 있었으나, 현재는 Oracle이 추가로 제공하는 일부 기능을 제외하면 차이가 없다.
@@ -27,10 +31,14 @@
 
 ### Eclipse
 
+<img src="img/3.png" height="100"></img>
+
 - IBM에서 시작하고 이클립스 재단에서 유지보수하는 오픈소스 IDE
 - 다양한 플러그인을 직접 설치할 수 있으며, 누적 사용자가 많아 문제 해결이 쉽다.
 
 ### Jetbrain IntelliJ IDEA (추천)
+
+<img src="img/4.png" height="100"></img>
 
 - 체코에 위치한 Jetbrain사에서 서비스하는 유료 IDE
 - 일부 기능이 제한된 무료 버전(Community Edition)을 제공함
@@ -38,6 +46,8 @@
   - 유료 버전(Ultimate Edition)에서는 JavaScript, Spring 등 웹 개발 기능이 추가됨
 
 ### Visual Studio Code
+
+<img src="img/5.png" height="300"></img>
 
 - 마이크로소프트에서 제공하는 코드에디터로, 오픈소스로 제공된다.
 - 가볍고 깔끔한 UI와 다양한 Extension을 이용해 입맛에 맞게 IDE로 구성 가능
@@ -47,11 +57,15 @@
 
 ### Git
 
+<img src="img/6.png" height="100"></img>
+
 - 가장 유명하고 많이 사용되는 VCS(버전 관리, 형상 관리, 소스 관리 시스템)
 - 리눅스를 개발한 Linus Torvalds가 개발한 형상 관리 프로그램
 - 소스 코드의 버전을 관리하고, 동료가 함께 개발할 수 있도록 하는 협력
 
 ### Github
+
+<img src="img/7.png" height="100"></img>
 
 - 2008년 4월부터 서비스되고 있는 Git 프로젝트 호스팅 서비스
 - 다양한 오픈 소스 프로젝트가 등록되어 있으며, 개인이 쉽게 사용할 수 있음
