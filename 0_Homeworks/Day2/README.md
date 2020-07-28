@@ -5,7 +5,7 @@
 - 프로그래밍 과제
   - [환자 레코드 출력하기](src/PrintFormat.java)
   - [입력받아 처리하기](src/InputOutput.java)
-  - [링 카운터 출력기](src/RingCounter.java)
+  - [링 카운터 출력기](src/RingCounter.java) - Advanced
 
 ## Submission
 
