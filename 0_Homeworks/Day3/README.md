@@ -4,7 +4,7 @@
 
 - 반복문, 조건문을 이용하여 주어진 문제 해결하기
   - [피보나치 수열](src/Fibonacci.java)
-  - [369게임+](src/ThreeSixNineAdvanced.java)
+  - [369게임+](src/ThreeSixNineAdvanced.java) - Advanced
 
 ## Submission
 
