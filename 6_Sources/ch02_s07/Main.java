@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.function.DoubleToIntFunction;
+
 /**
  * 배열 (Array)
  * 배열의 특성
@@ -13,6 +15,21 @@ public class Main {
 
     public static void main(String[] args) {
         int intVal;
+
+
+        int intOne = 2;
+        int intTwo = 4;
+        int intThree = 8;
+
+        System.out.println(intOne);
+        System.out.println(intTwo);
+        System.out.println(intThree);
+
+        int [] intArray1 = {2, 4, 8};
+        for (int x: intArray1) {
+            System.out.println(x);
+        }
+
 
         // 배열의 선언
         int [] integers;
@@ -61,7 +78,11 @@ public class Main {
             System.out.println(floats[i]);
         }
 
-        // Enhanced for, for each 문이라고도 합니다.
+        for (int i = 0; i < floats.length; i++) {
+            float floatVal = floats[i];
+            System.out.println(floatVal);
+        }
+        // Enhanced for, for each 문이라고도 합니다. 위와 같은 것!
         for (float floatVal: floats) {
             System.out.println(floatVal);
         }
