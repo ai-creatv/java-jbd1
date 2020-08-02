@@ -196,7 +196,7 @@ kia.printModel();
       public void swapReference(Foo x, Foo y) {
           int temp = x.value;
           x.value = y.value;
-          y.value = x.value;
+          y.value = temp;
       }
   }
 
