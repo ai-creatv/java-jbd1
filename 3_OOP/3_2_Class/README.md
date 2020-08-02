@@ -130,7 +130,7 @@ Car car = new Car();
 public class Car {
     String name;
 
-    void printModel() { // 메소드의 선언 (Method declaration)
+    void printModel() { // 메소드의 정의 (Method definition)
         System.out.println(name);
     }
 }
@@ -190,15 +190,13 @@ kia.printModel();
       public void swapPrimitive(int x, int y) {
           int temp = x;
           x = y;
-          y = x;
-          return;
+          y = temp;
       }
 
       public void swapReference(Foo x, Foo y) {
           int temp = x.value;
           x.value = y.value;
           y.value = x.value;
-          return;
       }
   }
 
