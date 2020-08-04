@@ -5,6 +5,7 @@
 - 클래스 완성하기
   - [MyMath 클래스](src/MyMath.java)
   - [싱글톤 패턴](src/SingletonPattern.java)
+  - [3D벡터 클래스](src/Vector3D.java)
 
 ## Submission
 
