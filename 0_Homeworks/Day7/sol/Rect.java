@@ -18,8 +18,7 @@ class Vector2D {
     }
 
     public String toString() {
-        // write codes here
-        return "VECTOR2D";
+        return "" + this.x + ", " + this.y;
     }
 }
 
@@ -34,8 +33,7 @@ class RectCore {
     }
 
     public String toString() {
-        // write codes here
-        return "RECTCORE";
+        return "RectCore(" + this.pos + ", " + w + ", " + h + ")";
     }
 }
 
@@ -45,27 +43,54 @@ public class Rect extends RectCore {
     }
 
     public float getArea() {
-        // write codes here
-        return 0.0f;
+        return w * h;
     }
 
     public Vector2D getCenterOfMass() {
-        // write codes here
-        return new Vector2D(0.0f, 0.0f);
+        return new Vector2D(pos.x + w / 2.0f, pos.y + h / 2.0f);
     }
 
     public Vector2D [] getAllPoints() {
-        // write codes here
-        return new Vector2D[4];
+        return new Vector2D[] {
+                pos,
+                new Vector2D(pos.x + w, pos.y),
+                new Vector2D(pos.x, pos.y + h),
+                new Vector2D(pos.x + w, pos.y + h)
+        };
     }
 
     public void rot90(Vector2D pivot) {
-        // write codes here
+        Vector2D [] oldPoints = getAllPoints();
+        Vector2D [] newPoints = new Vector2D[4];
+        for (int i = 0; i < oldPoints.length; i++) {
+            newPoints[i] = new Vector2D(
+                    -(oldPoints[i].y - pivot.y) + pivot.x,
+                    (oldPoints[i].x - pivot.x) + pivot.y
+            );
+        }
+
+        float min_x = newPoints[0].x;
+        float min_y = newPoints[0].y;
+        float max_x = newPoints[0].x;
+        float max_y = newPoints[0].y;
+        for (Vector2D vector2D: newPoints) {
+            min_x = Math.min(vector2D.x, min_x);
+            min_y = Math.min(vector2D.y, min_y);
+            max_x = Math.max(vector2D.x, max_x);
+            max_y = Math.max(vector2D.y, max_y);
+        }
+
+        pos = new Vector2D(min_x, min_y);
+        w = max_x - min_x;
+        h = max_y - min_y;
     }
 
     public String toString() {
-        // write codes here
-        return "RECT";
+        String s = super.toString();
+        s += "\nArea: " + getArea();
+        s += "\nCoM: " + getCenterOfMass();
+        s += "\n";
+        return s;
     }
 }
 
