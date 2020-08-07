@@ -9,7 +9,11 @@
  */
 
 public class SingletonPattern {
-
+    private final static SingletonPattern instance = new SingletonPattern();
+    private SingletonPattern() {}
+    public static SingletonPattern getInstance() {
+        return instance;
+    }
 }
 
 class SingletonPatternTest {
