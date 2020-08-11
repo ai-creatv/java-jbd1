@@ -7,5 +7,5 @@
   
 ## Submission
 
-- Due: 2020-08-010 24:00
+- Due: 2020-08-12 12:00
 - Method: Repository에 업로드한 후, Github Issue에 소스코드 위치 작성
