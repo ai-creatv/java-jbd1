@@ -63,3 +63,5 @@
     ```
 
 ## IDEA에서 UML 자동 생성
+
+<https://www.jetbrains.com/help/idea/class-diagram.html>
