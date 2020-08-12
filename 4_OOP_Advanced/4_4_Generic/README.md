@@ -117,6 +117,20 @@
   }
   ```
 
+- 메소드에 선언된 제네릭은 정적 메소드에도 사용 가능
+
+  ```java
+  class GenericMethod<T> {
+    public static void method(T t) { // Error
+      ...
+    }
+
+    public static <P> P method (P p) { // Possible
+      ...
+    }
+  }
+  ```
+
 - 와일드카드
   - `<?>` => `<? extends Object>`와 동일
   - `<? extends T>` => 와일드카드의 상한을 제한
