@@ -119,7 +119,7 @@
 
 - static 메소드: 클래스 메소드와 동일하게 사용 가능
   - 인터페이스 이름으로 호출 가능
-  - 클래스 구현체의 이름으로도 호출 가능
+  - 클래스 구현체의 이름으로는 호출할 수 없음
 
   ```java
   interface IFoo {
@@ -128,9 +128,13 @@
       }
   }
 
+  class Foo implements IFoo {
+  }
+
   public class Main {
       public static void main(String[] args) {
           IFoo.staticMethod(); // static method
+          // Foo.staticMethod(); // not possible
       }
   }
   ```
