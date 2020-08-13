@@ -15,12 +15,12 @@
  */
 
 interface List {
-    public void append(int value);
-    public void prepend(int value);
-    public void insert(int index, int value);
-    public void remove(int index);
-    public int get(int index);
-    public void length();
+    void append(int value);
+    void prepend(int value);
+    void insert(int index, int value);
+    void remove(int index);
+    int get(int index);
+    int length();
 }
 
 class IntArrayList implements List {
