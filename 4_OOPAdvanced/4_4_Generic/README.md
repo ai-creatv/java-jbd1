@@ -38,11 +38,12 @@
 ### 타입 파라미터 주의점
 
 - `static` 멤버 변수는 타입 파라미터를 사용할 수 없다.
+- 정적 메소드에도 타입 파라미터를 사용할 수 없다.
 
   ```java
   public class Generic<T> {
       static T classVar; // not possible
-      static void method(T localVar) {} // possible
+      static void method(T localVar) {} // not possible
   }
   ```
 
