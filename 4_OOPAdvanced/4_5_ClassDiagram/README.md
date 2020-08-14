@@ -22,7 +22,7 @@
 - Plant UML의 문법
   - 클래스, 추상클래스, 인터페이스
 
-    ```uml
+    ```puml
     interface IFoo {
         void method();
     }
@@ -50,13 +50,13 @@
 
   - 타이틀
 
-    ```uml
+    ```puml
     title 클래스 다이어그램 제목
     ```
 
   - 노트
 
-    ```uml
+    ```puml
     note left of Foo
       노트 <b>내용</b> 작성
     end note
