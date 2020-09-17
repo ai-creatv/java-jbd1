@@ -163,10 +163,12 @@ class Foo {
 }
 
 class BarOne extends Foo {
+    @Override
     void methodA() throws IOException {} // possible
 }
 
 class BarTwo extends Foo {
+    @Override
     void methodA() throws FileNotFoundException {} // 더 자식 Exception은 possible
 }
 
