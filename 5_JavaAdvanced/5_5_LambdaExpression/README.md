@@ -187,6 +187,7 @@
 #### Predicate 계열
 
 | 인터페이스 | 메소드 |
+|-----------|-------|
 | `Predicate<T>` | `boolean test(T t)` |
 | `BiPredicate<T, U>` | `boolean test(T t, U u)` |
 | `IntPredicate` | `boolean test(int value)` |

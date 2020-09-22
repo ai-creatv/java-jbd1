@@ -18,7 +18,7 @@
   - 구현체: HashSet, TreeSet
 - Map 인터페이스
   - Key-Value 쌍으로 이루어진 데이터의 집합
-  - 구현체: HashMap, TreeMap, HashTable, Properties
+  - 구현체: HashMap, TreeMap, Hashtable, Properties
 
 ### Collection 인터페이스
 
