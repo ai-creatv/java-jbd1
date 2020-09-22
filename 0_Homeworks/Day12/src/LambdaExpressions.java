@@ -11,7 +11,7 @@ interface Solution<T, R> {
 }
 
 class Algorithm<T, R> {
-    boolean test(T input, R groundtruth, Solution<? extends T, ?> solution) {
+    boolean test(T input, R groundtruth, Solution<? super T, ? super R> solution) {
         // TODO: solution을 실행하고, 이것이 정답(groundtruth)와 일치하는지 테스트하여 일치 여부를 출력.
         return true;
     }
