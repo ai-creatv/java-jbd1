@@ -181,12 +181,12 @@ Predicate 계열을 이용해 스트림 요소들이 특정 조건에 만족하�
 
 - 기본 집계 메소드
   - 기본형 스트림의 통계 : count(), sum(), average(), min(), max()
-  - T 타입 스트림의 통계 : count(), min(), max() (Comparator 필요)
+  - T 타입 스트림의 통계 : count(), min(), max() (min, max의 경우 `Comparator` 필요)
 
 - reduce() 메소드
   - `Optional<T> reduce(BinaryOperator<T> accumulator)` : accumulator를 수행하고 `Optional<T>` 타입 반환
   - `T reduce(T identity, BinaryOperator<T> accumulator)` : identity를 초기값으로 하여, accumulator를 이용해 집계 연산
-  - `<U> U reduce(U identity, BiFunction<U, ? super T, U> accumulator, B inaryOperator<U> combiner)` : combiner를 이용해 병렬 스트림 결합
+  - `<U> U reduce(U identity, BiFunction<U, ? super T, U> accumulator, BinaryOperator<U> combiner)` : combiner를 이용해 병렬 스트림 결합
 
 - `java.util.Optional<T>`
   - T 타입 객체의 null 여부에 따라 다르게 동작하는 Wrapper 클래스
