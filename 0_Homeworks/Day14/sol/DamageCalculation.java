@@ -46,8 +46,8 @@ enum Item implements Comparable<Item> {
         this.priority = priority;
     }
 
-    public int apply(int damage) {
-        return op.applyAsInt(damage);
+    public IntUnaryOperator getOp() {
+        return op;
     }
 
     public int getPriority() {
@@ -73,11 +73,11 @@ class Player {
 
     public int getDamage() {
         items.sort(Comparator.comparingInt(Item::getPriority));
-        int damage = weapon.getDamage();
+        IntUnaryOperator op = value -> value;
         for (Item item: items) {
-            damage = item.apply(damage);
+            op = op.andThen(item.getOp());
         }
-        return damage;
+        return op.applyAsInt(weapon.getDamage());
     }
 }
 
