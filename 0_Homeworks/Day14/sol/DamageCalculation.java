@@ -33,7 +33,7 @@ enum Weapon {
     }
 }
 
-enum Item implements Comparable<Item> {
+enum Item {
     MUSHROOM(value -> value + 20, 0),
     BLACK_POTION(value ->(int)(value * 1.1), 1),
     WHITE_POTION(value -> value + 200, 2);
