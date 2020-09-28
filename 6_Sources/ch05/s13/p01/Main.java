@@ -1,13 +1,7 @@
 package ch5.s13.p01;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
-import java.util.stream.DoubleStream;
-import java.util.stream.IntStream;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
+import java.util.*;
+import java.util.stream.*;
 
 
 /**
@@ -161,7 +155,61 @@ public class Main {
 
         // 수집 - Collection으로 변환하는 collect() 메소드
         // Stream API는 JCF -> Stream -> 처리 -> 결과(출력, 값, Collection)
-        
 
+        // Collectors 클래스의 정적 메소드를 이용하는 방법
+        // toList() 메소드를 쓸 경우, ArrayList로 collect하는 Collector 반환
+        String[] array = {"Collection", "Framework", "is", "so", "cool"};
+        Stream<String> stream3 = Arrays.stream(array);
+        List<String> collected = stream3.filter(s -> s.length() >= 3)
+                                    //   .collect(Collectors.toList()); // ArrayList
+                        .collect(Collectors.toCollection(LinkedList::new)); // LinkedList
+        System.out.println(collected);
+
+
+        // toSet() 메소드를 쓸 경우, HashSet으로 collect하는 Collector 반환
+        Stream<String> stream4 = Arrays.stream(array);
+        Set<String> collected2 = stream4.filter(s -> s.length() >= 3)
+//                            .collect(Collectors.toSet()); // HashSet
+            .collect(Collectors.toCollection(HashSet::new)); // Same Thing
+        System.out.println(collected2);
+
+        // Map<K, V>   Map.Entry<K, V>
+        Stream<String> stream5 = Arrays.stream(array);
+        Map<String, Integer> collected3 = stream5.filter(s -> s.length() >= 3)
+                    .collect(Collectors.toMap(s -> s, String::length)); // HashMap
+        System.out.println(collected3);
+
+        // 그룹화/분리 - groupingBy, partitioningBy
+        String [] arr = {"Python", "is", "aweful", "lame", "not", "good"};
+        Map<Integer, List<String>> map = Arrays.stream(arr)
+                .collect(Collectors.groupingBy(String::length));
+        System.out.println(map);
+
+        Map<Boolean, List<String>> map2 = Arrays.stream(arr)
+                .collect(Collectors.partitioningBy(s -> s.length() < 4));
+        System.out.println(map2);
+
+        // 그룹화 + Downstream collector
+        // 최종 처리 메소드에서 있던 count(), min()... 등과 유사한
+        // Collector중에도 counting(), minBy(), maxBy() ... 등이 있다.
+        Map<Integer, Long> map3 = Arrays.stream(arr)
+                .collect(Collectors.groupingBy(String::length,
+                                               Collectors.counting()));
+        System.out.println(map3);
+
+        // 병렬 스트림
+        Stream<String> parStream = Arrays.stream(arr).parallel();
+        System.out.println(parStream.map(String::length)
+                        .count());
+        List<String> list4 = List.of("atwe","bff","cqqqw","dtwer");
+
+        // parallelStream을 사용하면 연산 순서가 달라질 수 있다.
+        Stream<String> stream6 = list4.parallelStream();
+//        Stream<String> stream6 = list4.stream();
+        stream6.map(String::length)
+                .peek(s -> System.out.println("A:" + s))
+                .filter(value -> value > 3)
+                .peek(s -> System.out.println("B:" + s))
+                .forEach(System.out::println);
     }
 }
