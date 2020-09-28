@@ -123,6 +123,7 @@
   - 주요 Property
 
     | 속성 | 설명 |
+    |------|------|
     | `user.country` | OS 로케일 정보 |
     | `java.io.tmpdir` | 임시 경로 |
     | `line.separator` | 줄넘김 문자열 |
