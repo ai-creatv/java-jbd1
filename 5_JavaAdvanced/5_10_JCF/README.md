@@ -163,3 +163,61 @@
     |`public NavigableSet<E> headSet(E toElement, boolean inclusive)`|toElement 이전 요소로 구성된 객체 반환|
     |`public NavigableSet<E> tailSet(E fromElement, boolean inclusive)`|fromElement 이후 요소로 구성된 객체 반환|
     |`public NavigableSet<E> subSet(E fromElement, boolean fromInclusive, E toElement, boolean toInclusive)`|fromElement 이후, toElement 이전 요소로 구성된 객체 반환|
+
+### Map 인터페이스
+
+- Key와 Value의 쌍으로 구성된 자료의 집합을 다루는 인터페이스\
+  - Key, Value 쌍은 `Map.Entry<K, V>` 객체로 관리
+- Key는 중복될 수 없으며, Value는 중복이 가능
+- `Map<K, V>`의 구현체
+  - `HashMap<K, V>` : 가장 많이 사용되는 Map의 구현체
+  - `TreeMap<K, V>` : 정렬 기준이 더해진 NavigableMap을 구현한 구현체
+  - `Hashtable<K, V>` : HashMap과 유사하지만 성능이 떨어지는 대신 멀티스레드에 안전한 구현체
+  - `Properties<K, V>` : 속성 파일을 손쉽게 관리하는, `Hashtable<K, V>`의 하위 클래스 구현체
+
+- `Map<K, V>`의 주요 메소드
+
+  | 메소드 | 설명 |
+  |-------|------|
+  | `void clear()` | Map의 모든 요소를 삭제 |
+  | `boolean containsKey(Object key)` | key가 존재하는지 여부를 반환 |
+  | `boolean containsValue(Object value)` | value가 존재하는지 여부를 반환 |
+  | `Set<Map.Entry<K,V>> entrySet()` | Map의 Entry 요소를 Set에 담아 반환 |
+  | `V get(Object key)` | key에 해당하는 value 객체 반환 |
+  | `Set<K> keySet()` | key 요소를 Set 형태로 반환 |
+  | `V put(K key, V value)` | key와 value 쌍으로 구성된 Entry 추가. 기존에 등록된 key라면 해당 value를, 없으면 null을 반환 |
+  | `void putAll(Map<? extends K, ? extends V> m)` | m에 속한 모든 Entry를 추가 |
+  | `V remove(Object key)` | key에 해당하는 Entry를 제거하고 반환. 등록되지 않은 key라면 null 반환 |
+  | `Collection<V> values` | value 객체들을 Collection에 담아 반환 |
+  | `int size()` | Map에 포함된 Entry 객체의 수 반환 |
+  | `boolean isEmpty()` | Map에 데이터가 없는지 여부 반환 |
+
+- `TreeMap<K, V>`의 주요 메소드
+
+  |메소드|설명|
+  |-----|----|
+  |`public Map.Entry<K, V> firstEntry()`|정렬된 첫 Entry 반환|
+  |`public Map.Entry<K, V> lastEntry()`|정렬된 마지막 Entry 반환|
+  |`public Map.Entry<K, V> lowerEntry(K key)`|key 바로 이전 Entry 반환|
+  |`public Map.Entry<K, V> higherEntry(K key)`|key 바로 다음 Entry 반환|
+  |`public Map.Entry<K, V> floorEntry(K key)`|key 또는 key 보다 이전 Entry 반환|
+  |`public Map.Entry<K, V> ceilingEntry(K key)`|key 또는 key 보다 이후 Entry 반환|
+  |`public Map.Entry<K, V> pollFirstEntry()`|정렬된 첫 Entry를 제거하고 반환|
+  |`public Map.Entry<K, V> pollLastEntry()`|정렬된 마지막 Entry를 제거하고 반환|
+  |`public NavigableSet<E> descendingKeySet()`|내림차순으로 정렬하는 Set 반환|
+  |`public NavigableSet<E> descendingKeyMap()`|내림차순으로 정렬하는 Map 반환|
+  |`public NavigableMap<K, V> headMap(K toKey, boolean inclusive)`|toKey 이전 Entry로 구성된 객체 반환|
+  |`public NavigableMap<K, V> tailMap(K fromKey, boolean inclusive)`|fromKey 이후 Entry로 구성된 객체 반환|
+  |`public NavigableMap<K, V> subMap(K fromKey, boolean fromInclusive, K toKey, boolean toInclusive)`|fromKey 이후, toKey 이전 Entry로 구성된 객체 반환|
+
+- `Properties<K, V>`의 주요 메소드
+
+  | 메소드 | 설명 |
+  |-------|------|
+  | `getProperty()` | key에 해당하는 속성 값을 반환 |
+  | `stringPropertyNames()` | key의 목록을 `Set<String>`으로 반환 |
+  | `setProperty()` | key로 value를 등록하고 기존 value 값을 반환 |
+  | `load()` | reader를 이용해 속성을 읽어온다. (.properties) |
+  | `loadFromXML()` | XML 형식으로 저장된 속성을 읽어온다. |
+  | `store()` | writer를 이용해 속성을 저장한다. |
+  | `storeToXML()` | XML 형식으로 속성 파일을 저장한다. |
