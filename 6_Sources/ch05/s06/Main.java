@@ -113,5 +113,44 @@ public class Main {
         System.out.println(System.getProperty("line.separator")); // windows \r\n, UNIX \n
         System.out.println(System.getProperty("user.home"));
         System.out.println(System.getProperty("file.separator")); // windows \ UNIX /
+
+        // Math 클래스
+        // 수학 계산에 필요한 메소드를 가진 final 클래스 -> 상속을 할 수 없음 (상속해서 구현해 봐야 기존 구현보다 나을리 없다)
+        // 모든 메소드가 static 메소드로 구현되어 있음
+
+        System.out.println(Math.abs(-4.0f)); // int long float double 오버라이딩
+        System.out.println(Math.ceil(1.2)); // double 입력, 출력도 double -> 값의 범위
+        System.out.println(Math.floor(1524.4)); // double 입력, 출력도 double -> 값의 범위
+        System.out.println(Math.max(4, 2)); // 2개의 값만을 비교하게 되어 있음 -> Java에서는 2개씩만 비교 -> Reduce
+        System.out.println(Math.min(4, 2));
+        System.out.println(Math.random()); // 0.0 이상, 1.0 미만의 값을 임의로 출력
+
+        
+        // 확률 표현
+        int count = 0;
+        for (int i = 0; i < 1000; i++) {
+            if (Math.random() < 0.3) { // 30% 확률
+                count += 1;
+            }
+        }
+        System.out.println(count);
+
+        // 랜덤한 정수
+        int minVal = 2;
+        int maxVal = 10;
+        int randInt = (int)(Math.random() * (maxVal - minVal + 1) + minVal);
+        System.out.println(randInt);
+
+        System.out.println(Math.round(1.4f)); // float -> int, double -> long
+
+        System.out.println(Integer.MAX_VALUE + 10);
+        try {
+            System.out.println(Math.addExact(Integer.MAX_VALUE, 10));
+            System.out.println(Math.subtractExact(Integer.MAX_VALUE, -10));
+            System.out.println(Math.multiplyExact(Integer.MAX_VALUE, 4));
+        } catch (ArithmeticException e) {
+            e.printStackTrace();
+        }
+
     }
 }
