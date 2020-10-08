@@ -173,7 +173,7 @@
   - `HashMap<K, V>` : 가장 많이 사용되는 Map의 구현체
   - `TreeMap<K, V>` : 정렬 기준이 더해진 NavigableMap을 구현한 구현체
   - `Hashtable<K, V>` : HashMap과 유사하지만 성능이 떨어지는 대신 멀티스레드에 안전한 구현체
-  - `Properties<K, V>` : 속성 파일을 손쉽게 관리하는, `Hashtable<K, V>`의 하위 클래스 구현체
+  - `Properties` : 속성 파일을 손쉽게 관리하는, `Hashtable<K, V>`의 하위 클래스 구현체
 
 - `Map<K, V>`의 주요 메소드
 
@@ -210,7 +210,7 @@
   |`public NavigableMap<K, V> tailMap(K fromKey, boolean inclusive)`|fromKey 이후 Entry로 구성된 객체 반환|
   |`public NavigableMap<K, V> subMap(K fromKey, boolean fromInclusive, K toKey, boolean toInclusive)`|fromKey 이후, toKey 이전 Entry로 구성된 객체 반환|
 
-- `Properties<K, V>`의 주요 메소드
+- `Properties`의 주요 메소드
 
   | 메소드 | 설명 |
   |-------|------|

@@ -33,7 +33,7 @@ public @interface SuppressWarnings {                                   // 애노
 ```java
 @SuppressWarnings(value = {"unused", "rawtypes"}) // 키 = 값 배열
 @SuppressWarnings(value = "unused")               // 값이 하나인 경우 배열 생략 가능
-@SuppressWarnings({"unused", "rawtypes"})         // 속성이 하나인 경우 키 생략 가능
+@SuppressWarnings({"unused", "rawtypes"})         // 속성이 value 하나인 경우 키 생략 가능
 
 @CustomAnnotation(key1 = "value1", key2 = {"value2", "value3"}) // 속성이 여러개인 경우 키를 여러개 사용
 ```
@@ -69,10 +69,10 @@ public @interface SuppressWarnings {                                   // 애노
 - 사용자 정의 애노테이션 구현
 
   ```java
-  @Retection(RUNTIME)
+  @Retention(RUNTIME)
   @Target(FIELD)
   public @interface CustomAnnotation {
-      String valueOne();
+      String value();
       String valueTwo() default "기본값";
   }
   ```
@@ -83,11 +83,11 @@ public @interface SuppressWarnings {                                   // 애노
   class CustomAnnotationUsage {
       @CustomAnnotation("game")
       String gameName = "여러분의 틱택토";
-      @CustomAnnotation(valueOne = "server", valueTwo = "localhost")
+      @CustomAnnotation(value = "server", valueTwo = "localhost")
       String serverIP;
       @CustomAnnotation("game")
       String gameMode = "AI vs. AI";
-      @CustomAnnotation(valueOne = "server", valueTwo = "8888")
+      @CustomAnnotation(value = "server", valueTwo = "8888")
       String serverPort;
   }
   ```
@@ -96,26 +96,26 @@ public @interface SuppressWarnings {                                   // 애노
 
   ```java
   class CustomAnnotationTest {
-      public static void main(String[] args) throws Exception {
-          CustomAnnotationUsage obj = new CustomAnnotationUsage();
-          Map<String, Object> gameProp = new HashMap<>();
-          Map<String, Object> serverProp = new HashMap<>();
+    public static void main(String[] args) throws Exception {
+        CustomAnnotationUsage obj = new CustomAnnotationUsage();
+        Map<String, Object> gameProp = new HashMap<>();
+        Map<String, Object> serverProp = new HashMap<>();
 
-          Field[] fields = CustomAnnotationUsage.class.getDeclaredFields();
-          for (Field field: fields) {
-              CustomAnnotation annotation = field.getDeclaredAnnotation(annotation.class);
-              if (field.get(obj) == null) {
-                  field.set(obj, annotation.valueTwo());
-              }
-              if (annotation.value().equals("game")) {
-                  gameProp.put(field.getName(), field.get(obj));
-              } else {
-                  serverProp.put(field.getName(), field.get(obj));
-              }
-          }
+        Field[] fields = CustomAnnotationUsage.class.getDeclaredFields();
+        for (Field field: fields) {
+            CustomAnnotation annotation = field.getDeclaredAnnotation(CustomAnnotation.class);
+            if (field.get(obj) == null) {
+                field.set(obj, annotation.valueTwo());
+            }
+            if (annotation.value().equals("game")) {
+                gameProp.put(field.getName(), field.get(obj));
+            } else {
+                serverProp.put(field.getName(), field.get(obj));
+            }
+        }
 
-          System.out.println(gameProp);
-          System.out.println(serverProp);
+        System.out.println(gameProp);
+        System.out.println(serverProp);
 
       }
   }
