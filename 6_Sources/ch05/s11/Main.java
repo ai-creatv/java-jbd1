@@ -235,18 +235,87 @@ public class Main {
                               // readBoolean, readByte, readShort ... readUTF(String)
                               // writeBoolean, writeByte, writeShort ... writeUTF(String
 
-        File src = new File("D:/Temp/MyTemp/data.dat");
-        DataOutputStream out = new DataOutputStream(new FileOutputStream(src));
-        out.writeUTF("자바왕");
-        out.writeInt(128);
-        out.writeFloat(523.411f);
+//        File src = new File("D:/Temp/MyTemp/data.dat");
+//        DataOutputStream out = new DataOutputStream(new FileOutputStream(src));
+//        out.writeUTF("자바왕");
+//        out.writeInt(128);
+//        out.writeFloat(523.411f);
+//
+//        DataInputStream in = new DataInputStream(new FileInputStream(src));
+//        String str = in.readUTF();
+//        int integer = in.readInt();
+//        float floatVal = in.readFloat();
+//
+//        System.out.println(str + " " + integer + " " + floatVal);
 
-        DataInputStream in = new DataInputStream(new FileInputStream(src));
-        String str = in.readUTF();
-        int integer = in.readInt();
-        float floatVal = in.readFloat();
+        // 객체 직렬화를 위한 인터페이스 - Serializable
+        //
+        class Foo implements Serializable {
+            static final long serialVersionUID = 1L; // 클래스 버전 관리
+            // 객체를 저장할떄와 불러올 때 같은지 체크하여
+            // serialVersionUID가 일치하지 않으면 실패
 
-        System.out.println(str + " " + integer + " " + floatVal);
+            String userName;
+            int userID;
+            transient String passWord;
+            // Serialize에 포함하지 않음 (저장/불러오기 대상에서 제외)
+
+            public Foo() {}
+
+            public Foo(String userName, int userID, String passWord) {
+                this.userName = userName;
+                this.userID = userID;
+                this.passWord = passWord;
+            }
+
+            @Override
+            public String toString() {
+                return userName + " " + userID + " " + passWord;
+            }
+        }
+
+        Foo foo = new Foo("HanSol-The-OutSider",
+                1423, "negazeilzalnaga");
+        System.out.println(foo);
+
+        File dst = new File("D:/Temp/MyTemp/obj.data");
+
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(dst));
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(dst))) {
+            out.writeObject(foo);
+            Object read = in.readObject();
+            if (read != null && read instanceof Foo) {
+                Foo readFoo = (Foo)read;
+                System.out.println(readFoo);
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+        // 부모클래스는 Serializable하지 않을 때,
+        // 자식클래스를 Serializable하게 구현하기
+        class ParentFoo {
+            int memVarOne;
+            double memVarTwo;
+        }
+
+        class ChildFoo extends ParentFoo implements Serializable {
+            int childMember;
+
+            private void writeObject(ObjectOutputStream out) throws IOException {
+                out.writeInt(memVarOne);
+//                out.writeDouble(memVarTwo); // transient 대신 그냥 원하는것만 쓰면 된다.
+                out.defaultWriteObject();
+            }
+
+            private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+                memVarOne = in.readInt();
+//                memVarTwo = in.readDouble();
+                in.defaultReadObject();
+            }
+        }
+
 
     }
 }
