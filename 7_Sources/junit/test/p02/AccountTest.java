@@ -92,6 +92,7 @@ public class AccountTest {
         }
     }
 
+
     // Rule을 이용하면 메소드 코드에 expected exception이 드러나므로 인지적으로 개선
     @Rule
     public ExpectedException thrown = ExpectedException.none();
